@@ -1,0 +1,48 @@
+version: "3.6"
+
+services:
+
+  themoerch:
+    container_name: the-moerch
+    image: nginx:latest
+    restart: always
+    
+    volumes:
+      - "./app:/usr/share/nginx/html"
+      
+    labels:
+      traefik.enable: true
+
+      traefik.http.routers.themoerch.rule: "Host(`www.themoerch.com`, `themoerch.com`)"
+      traefik.http.routers.themoerch.entrypoints: web
+      traefik.http.routers.themoerch.middlewares: themoerch-redirect-secure,gzip-compress
+
+      traefik.http.middlewares.gzip-compress.compress: true
+
+      traefik.http.middlewares.themoerch-redirect-secure.redirectscheme.scheme: https
+      traefik.http.middlewares.themoerch-redirect-secure.redirectscheme.permanent: true
+
+      traefik.http.routers.themoerch-secure.rule: "Host(`www.themoerch.com`, `themoerch.com`)"
+      traefik.http.routers.themoerch-secure.entrypoints: websecure
+      traefik.http.routers.themoerch-secure.tls.certresolver: mytlschallenge
+      traefik.http.routers.themoerch-secure.tls.options: secureTLSOptions@file
+
+      # middlewares to be used
+      traefik.http.routers.themoerch-secure.middlewares: secHeader,gzip-compress
+
+      # security headers
+      traefik.http.middlewares.secHeader.headers.frameDeny: true
+      traefik.http.middlewares.secHeader.headers.contentTypeNosniff: true
+      traefik.http.middlewares.secHeader.headers.browserXssFilter: true
+      traefik.http.middlewares.secHeader.headers.forceSTSHeader: true
+      traefik.http.middlewares.secHeader.headers.stsPreload: true
+      traefik.http.middlewares.secHeader.headers.stsSeconds: 31536000
+      traefik.http.middlewares.secHeader.headers.stsIncludeSubdomains: true
+      traefik.http.middlewares.secHeader.headers.sslRedirect: true
+      traefik.http.middlewares.secHeader.headers.referrerPolicy: strict-origin
+
+    networks:
+      - erm4sn_web
+networks:
+   erm4sn_web:
+       external: true

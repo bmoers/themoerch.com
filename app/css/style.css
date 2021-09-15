@@ -1,0 +1,58 @@
+body,
+#shop {
+    background-color: #000;
+}
+
+#sprd-main,
+#shop {
+    font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+}
+
+#sprd-main .sprd__caption,
+#sprd-main .sprd__headline {
+    font-family: Raleway, Helvetica, Arial, sans-serif;
+}
+
+.sprd-email-image {
+    background-color: white;
+}
+
+#buttonSpreadshirt,
+.sprd-footer-box--reviews,
+#department-filter-D6,
+#subFilter-D3-P33,
+#subFilter-D3-P69,
+#subFilter-D4-P40,
+#subFilter-D4-P61,
+#subFilter-D1-P24,
+#subFilter-D1-P68,
+.sprd-about-info__backbtn {
+    display: none;
+}
+
+#department-filter-D1>div,
+#department-filter-D3>div,
+#department-filter-D4>div {
+    display: none;
+}
+
+.SprdMain .sprd-department-filter__departments {
+    background-color: transparent;
+}
+
+a {
+    color: #fff;
+}
+
+.SprdMain .sprd-product-list {
+    justify-content: space-evenly !important;
+    min-height: 55vh !important;
+}
+
+#onetrust-banner-sdk .ot-sdk-container {
+    background-color: #000;
+}
+
+#onetrust-policy * {
+    color: gray !important;
+}
