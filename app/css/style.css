@@ -45,7 +45,7 @@ a {
 }
 
 .SprdMain .sprd-product-list {
-    justify-content: space-evenly !important;
+    justify-content: center !important;
     min-height: 55vh !important;
 }
 
