@@ -56,3 +56,6 @@ a {
 #onetrust-policy * {
     color: gray !important;
 }
+#onetrust-consent-sdk #onetrust-banner-sdk {
+    background-color: #000;
+}
